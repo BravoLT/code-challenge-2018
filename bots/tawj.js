@@ -29,6 +29,10 @@ class TJBot {
       this.allowAttack = true;
     }
 
+    if (this.currentTurn <= 0) {
+      this.allowAttack = false;
+    }
+
     this.currentTurn++;
 
     return {
