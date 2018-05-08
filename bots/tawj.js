@@ -44,8 +44,6 @@ function getRandomInt(min, max) {
 }
 
 function onRoundEnd(roundResult) {
-  lastObservedAttack = roundResult.them.launchedAttack ? roundResult.turnsPlayed : null;
-  console.log(lastObservedAttack);
 }
 
 function getPlayer() {
