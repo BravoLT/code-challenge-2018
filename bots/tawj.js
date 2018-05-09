@@ -13,27 +13,27 @@ class TJBot {
 
   onRoundStart(roundRules) {
     this.currentTurn = 0;
+    this.turnsInThisRound = roundRules.turns;
     this.turnToAttack = getRandomInt(1, roundRules.turns + 1); // turns + 1 to enable never attacking
   };
 
   playTurn(playerState) {
+    this.currentTurn++;
     let productionCapacity = playerState.producers;
 
     let producersToCreate = 0;
     let soldiersToCreate = 0;
     let allowAttack = false;
-    if (this.currentTurn %2 == 0) {
+    if (this.currentTurn %2 == 1) {
       producersToCreate = productionCapacity;
     } else {
       soldiersToCreate = productionCapacity;
       this.allowAttack = true;
     }
 
-    if (this.currentTurn <= 0) {
+    if (this.currentTurn <= 1 || this.currentTurn == this.turnsInThisRound) {
       this.allowAttack = false;
     }
-
-    this.currentTurn++;
 
     return {
       newProducers: producersToCreate,
